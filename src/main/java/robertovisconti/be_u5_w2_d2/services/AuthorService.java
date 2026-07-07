@@ -1,0 +1,28 @@
+package robertovisconti.be_u5_w2_d2.services;
+
+
+import org.springframework.stereotype.Service;
+import robertovisconti.be_u5_w2_d2.entities.Author;
+import robertovisconti.be_u5_w2_d2.payloads.AuthorPayload;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class AuthorService {
+
+    private List<Author> authorDB = new ArrayList<>();
+
+
+    // ritorno gli autori
+    public List<Author> findAll() {
+        return this.authorDB;
+    }
+
+    // salvo gli autori
+    public Author saveAuthor(AuthorPayload body) {
+        Author newAuthor = new Author(body.getName(), body.getSurname(), body.getEmail(), body.getDataDiNascita());
+        this.authorDB.add(newAuthor);
+        return newAuthor;
+    }
+}
