@@ -39,10 +39,16 @@ public class BlogController {
         return this.blogService.findById(blogId);
     }
 
-    //PUT
+    // PUT
     @PutMapping("/{blogId}")
     public Blog findByIdAndUpdate(@PathVariable long blogId, @RequestBody BlogPayload body) {
         return this.blogService.findByIdAndUpdate(blogId, body);
     }
 
+    // DELETE
+    @DeleteMapping("/{blodId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void findByIdAndDelete(@PathVariable long blogId) {
+        this.blogService.findByIdAndDelete(blogId);
+    }
 }

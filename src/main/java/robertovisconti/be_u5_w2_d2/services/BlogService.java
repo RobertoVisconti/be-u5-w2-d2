@@ -50,4 +50,11 @@ public class BlogService {
 
         return found;
     }
+
+    // ricerca tramite id e delete
+    public Blog findByIdAndDelete(long blogId) {
+        Blog found = this.findById(blogId);
+        this.blogDB.remove(found);
+        return found;
+    }
 }

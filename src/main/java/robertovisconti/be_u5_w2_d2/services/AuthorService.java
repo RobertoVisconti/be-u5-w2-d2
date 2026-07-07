@@ -49,4 +49,11 @@ public class AuthorService {
         found.setDataDiNascita(body.getDataDiNascita());
         return found;
     }
+
+    // ricerca tramite id e delete
+    public Author findByIdAndDelete(long authorId) {
+        Author found = this.findById(authorId);
+        this.authorDB.remove(found);
+        return found;
+    }
 }
