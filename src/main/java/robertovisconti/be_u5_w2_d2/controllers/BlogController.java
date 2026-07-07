@@ -1,10 +1,10 @@
 package robertovisconti.be_u5_w2_d2.controllers;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import robertovisconti.be_u5_w2_d2.entities.Blog;
+import robertovisconti.be_u5_w2_d2.payloads.BlogPayload;
 import robertovisconti.be_u5_w2_d2.services.BlogService;
 
 import java.util.List;
@@ -24,5 +24,18 @@ public class BlogController {
     @GetMapping
     public List<Blog> findAll() {
         return this.blogService.findAll();
+    }
+
+    // POST
+    @GetMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Blog createBlog(@RequestBody BlogPayload body) {
+        return this.blogService.saveBlog(body);
+    }
+
+    // GET BY ID
+    @GetMapping("/{blogId}")
+    public Blog findById(@PathVariable long blogId) {
+        return this.blogService.findById(blogId);
     }
 }

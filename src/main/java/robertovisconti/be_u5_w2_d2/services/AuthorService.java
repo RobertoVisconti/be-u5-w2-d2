@@ -3,6 +3,7 @@ package robertovisconti.be_u5_w2_d2.services;
 
 import org.springframework.stereotype.Service;
 import robertovisconti.be_u5_w2_d2.entities.Author;
+import robertovisconti.be_u5_w2_d2.exceptions.NotFoundExceptions;
 import robertovisconti.be_u5_w2_d2.payloads.AuthorPayload;
 
 import java.util.ArrayList;
@@ -24,5 +25,18 @@ public class AuthorService {
         Author newAuthor = new Author(body.getName(), body.getSurname(), body.getEmail(), body.getDataDiNascita());
         this.authorDB.add(newAuthor);
         return newAuthor;
+    }
+
+    // ricerca tramite id
+    public Author findById(long authorId) {
+        Author found = null;
+
+        for (Author author : this.authorDB) {
+            if (author.getId() == authorId) found = author;
+        }
+
+        if (found == null) throw new NotFoundExceptions(authorId);
+
+        return found;
     }
 }

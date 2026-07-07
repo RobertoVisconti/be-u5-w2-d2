@@ -1,10 +1,10 @@
 package robertovisconti.be_u5_w2_d2.controllers;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import robertovisconti.be_u5_w2_d2.entities.Author;
+import robertovisconti.be_u5_w2_d2.payloads.AuthorPayload;
 import robertovisconti.be_u5_w2_d2.services.AuthorService;
 
 import java.util.List;
@@ -26,5 +26,16 @@ public class AuthorController {
     }
 
     //POST
+    @GetMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Author createAuthor(@RequestBody AuthorPayload body) {
+        return this.authorService.saveAuthor(body);
+    }
+
+    // GET BY ID
+    @GetMapping("/{authorId}")
+    public Author findById(@PathVariable long authorId) {
+        return this.authorService.findById(authorId);
+    }
 
 }

@@ -3,6 +3,7 @@ package robertovisconti.be_u5_w2_d2.services;
 
 import org.springframework.stereotype.Service;
 import robertovisconti.be_u5_w2_d2.entities.Blog;
+import robertovisconti.be_u5_w2_d2.exceptions.NotFoundExceptions;
 import robertovisconti.be_u5_w2_d2.payloads.BlogPayload;
 
 import java.util.ArrayList;
@@ -25,4 +26,17 @@ public class BlogService {
         return newBlog;
     }
 
+
+    // ricerca tramite id
+    public Blog findById(long blogId) {
+        Blog found = null;
+
+        for (Blog blog : this.blogDB) {
+            if (blog.getId() == blogId) found = blog;
+        }
+
+        if (found == null) throw new NotFoundExceptions(blogId);
+
+        return found;
+    }
 }
