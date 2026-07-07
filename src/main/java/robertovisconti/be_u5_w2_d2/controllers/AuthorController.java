@@ -26,7 +26,7 @@ public class AuthorController {
     }
 
     //POST
-    @GetMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Author createAuthor(@RequestBody AuthorPayload body) {
         return this.authorService.saveAuthor(body);

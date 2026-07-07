@@ -27,7 +27,7 @@ public class BlogController {
     }
 
     // POST
-    @GetMapping
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Blog createBlog(@RequestBody BlogPayload body) {
         return this.blogService.saveBlog(body);
