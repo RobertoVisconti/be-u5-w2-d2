@@ -38,4 +38,10 @@ public class AuthorController {
         return this.authorService.findById(authorId);
     }
 
+    //PUT
+    @PutMapping("/{authorId}")
+    public Author findByIdAndUpdate(@PathVariable long authorId, @RequestBody AuthorPayload body) {
+        return this.authorService.findByIdAndUpdate(authorId, body);
+    }
+
 }

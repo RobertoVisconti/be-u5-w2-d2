@@ -39,4 +39,15 @@ public class BlogService {
 
         return found;
     }
+
+    // ricerca tramite id e update
+    public Blog findByIdAndUpdate(long blogId, BlogPayload body) {
+        Blog found = this.findById(blogId);
+        found.setTitolo(body.getTitolo());
+        found.setCategoria(body.getCategoria());
+        found.setContenuto(body.getContenuto());
+        found.setTempoDiLettura(body.getTempoDiLettura());
+
+        return found;
+    }
 }

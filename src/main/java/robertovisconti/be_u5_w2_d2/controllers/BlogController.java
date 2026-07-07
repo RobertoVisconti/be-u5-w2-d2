@@ -38,4 +38,11 @@ public class BlogController {
     public Blog findById(@PathVariable long blogId) {
         return this.blogService.findById(blogId);
     }
+
+    //PUT
+    @PutMapping("/{blogId}")
+    public Blog findByIdAndUpdate(@PathVariable long blogId, @RequestBody BlogPayload body) {
+        return this.blogService.findByIdAndUpdate(blogId, body);
+    }
+
 }

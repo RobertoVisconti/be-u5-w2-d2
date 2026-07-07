@@ -39,4 +39,14 @@ public class AuthorService {
 
         return found;
     }
+
+    // ricerca tramite id e update
+    public Author findByIdAndUpdate(long authorId, AuthorPayload body) {
+        Author found = this.findById(authorId);
+        found.setName(body.getName());
+        found.setSurname(body.getSurname());
+        found.setEmail(body.getEmail());
+        found.setDataDiNascita(body.getDataDiNascita());
+        return found;
+    }
 }
